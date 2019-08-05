@@ -28,8 +28,11 @@
                 <h3 class="card-title">Titles
                 </h3>
               </div>  
+              
+              @include('includes.messages')
           <!-- form start -->
-                <form role="form">
+                <form role="form" action="{{ route('category.store') }}" method="post">
+                  {{ csrf_field() }}
                 <div class="card-body">
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -47,6 +50,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{ route('category.index') }}" class="btn btn-warning">Back</a>
                 </div>
               </form>
  

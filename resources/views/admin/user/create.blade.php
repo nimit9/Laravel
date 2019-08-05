@@ -28,12 +28,8 @@
                 <h3 class="card-title">Titles
                 </h3>
               </div>  
-
-              @include('includes.messages')
           <!-- form start -->
-                <form role="form" action="{{ route('post.store') }}" method="post">
-                {{ csrf_field() }}
-
+                <form role="form">
                 <div class="card-body">
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -98,7 +94,7 @@
             <!-- /.card-header -->
             <div class="card-body pad">
               <div class="mb-3">
-                <textarea class="textarea" name="body" placeholder="Place some text here"
+                <textarea class="textarea" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </div>
               
