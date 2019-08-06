@@ -1,6 +1,9 @@
 @extends('admin/layouts/app')
 
 @section('main-content')
+@section('headSection')
+<link rel="stylesheet" href="{{ asset('admin/plugins/datatables/dataTables.bootstrap4.css') }}">
+@endsection
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -55,8 +58,25 @@
                   <td>{{ $loop->index + 1 }}</td>
                   <td>{{ $category->name }}</td>
                   <td>{{ $category->slug }}</td>
-                  <td>Edit</td>
-                  <td>Delete</td>
+                  <td><a href = "{{ route('category.edit',$category->id) }}"><i class="fas fa-edit"></i></a></td>
+                  <td>
+                    <form id="delete-form-{{ $category->id }}" method="post" action = "{{ route('category.destroy',$category->id)}}" style=" display:none">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                  </form> 
+                  <a href="" onclick= "
+                    if(confirm('Are you sure you want to delete this'))
+                    {
+                      event.preventDefault();
+                      document.getElementById('delete-form-{{$category->id}}').submit();
+                    }
+                    else {
+                      event.preventDefault();
+
+                    }"> 
+                      
+                      <i class="fas fa-trash-alt "></i></td>
+                  </a> </td>
                 </tr>
 
 
