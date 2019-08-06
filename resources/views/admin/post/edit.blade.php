@@ -2,6 +2,11 @@
 
 @section('main-content')
 
+@section('headSection')
+<link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
+@endsection
+ 
+
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -70,12 +75,41 @@
 
 
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="status" id="status">
-                    <label class="form-check-label" for="status" @if ($post->status == 1) checked @endif>Publish</label>
+                    <label class="form-check-label" for="status"> 
+                    <input type="checkbox" class="form-check-input" name="status" value="1" id="status"
+                    
+                    @if($post->status == 1) 
+                    {{'checked'}}
+                     @endif
+                     >
+                   Publish</label>
                   </div>
-            </div>               
-                  
+            </div>  
+             <br> 
+             
+            <div class="col-lg-6">
+             <div class="form-group">
+                  <label>Select Tag</label>
+                  <select class="form-control select2" style="width: 100%;" name="tags[]">
+                  @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{$tag->name}}</option>
+                  }
+                  @endforeach  
+                  </select>
                 </div>
+                
+                <div class="form-group">
+                  <label>Select Category</label>
+                  <select class="form-control select2" style="width: 100%;" name="categories[]">
+                    <@foreach ($categories as $category )
+                  
+                  <option value="{{ $category->id }}">{{$category->name}}</option>
+                  @endforeach  
+                  </select>
+                </div>
+                </div>              
+                  
+         </div>
                 <!-- /.card-body -->
 
                  <!-- Main content -->
@@ -129,3 +163,14 @@
   <!-- /.content-wrapper -->
 
   @endsection
+
+  @section('footerSection')
+  <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
+  <script>
+    $(document).ready(function(){
+      $('.select2').select2()
+    
+    });
+    </script>  
+
+ @endsection   
