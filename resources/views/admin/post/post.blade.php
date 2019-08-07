@@ -125,7 +125,7 @@
             <!-- /.card-header -->
             <div class="card-body pad">
               <div class="mb-3">
-                <textarea class="textarea" name="body" placeholder="Place some text here"
+                <textarea class="textarea" name="body" placeholder="Place some text here" id="editor1"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
               </div>
               
@@ -157,6 +157,10 @@
   @endsection
 
   @section('footerSection')
+  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+  <script>
+                        CKEDITOR.replace( 'editor1' );
+                </script>
   <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
   <script>
     $(document).ready(function(){
