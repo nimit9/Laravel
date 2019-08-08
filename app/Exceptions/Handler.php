@@ -48,4 +48,13 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+
+    protected function unauthencticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()){
+            return response()->json(['error'=>'Unauthencticated.'],401);
+        }
+
+        
+    }
 }
